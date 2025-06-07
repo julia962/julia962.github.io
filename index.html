@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julia's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a1b4b;
+            --accent: #007AFF;
+            --bg: #f8f9fa;
+            --card-bg: #fff;
+            --text: #222;
+            --muted: #6c757d;
+            --radius: 24px;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+        }
+        .navbar {
+            background: var(--card-bg);
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: 0 2px 16px rgba(26,27,75,0.04);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--navy);
+            letter-spacing: -1px;
+        }
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav a {
+            color: var(--navy);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .nav a:hover {
+            color: var(--accent);
+        }
+        .hero {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            margin: 2rem auto 2.5rem auto;
+            max-width: 900px;
+            box-shadow: 0 8px 32px rgba(26,27,75,0.08);
+            padding: 3rem 2rem 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 300px; height: 300px;
+            background: linear-gradient(120deg, var(--accent) 0%, var(--navy) 100%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+        .hero .location {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero .avatar {
+            float: right;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--bg);
+            box-shadow: 0 4px 24px rgba(26,27,75,0.10);
+            margin-left: 2rem;
+        }
+        .section {
+            max-width: 900px;
+            margin: 0 auto 2.5rem auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 24px rgba(26,27,75,0.06);
+            padding: 2.5rem 2rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+        .card-list {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .info-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(26,27,75,0.04);
+            padding: 1.5rem 1.2rem;
+            flex: 1 1 220px;
+            min-width: 220px;
+            margin-bottom: 1.5rem;
+        }
+        .info-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .info-card p {
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 1rem;
+            margin: 2rem 0 1rem 0;
+        }
+        @media (max-width: 900px) {
+            .hero, .section { padding: 2rem 1rem; }
+            .card-list { flex-direction: column; gap: 1rem; }
+            .hero .avatar { float: none; display: block; margin: 0 auto 1.5rem auto; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Julia</div>
+        <div class="nav">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#travel">Travel</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Julia's Avatar" class="avatar">
+            <h1>Hey There,<br>I'm Julia</h1>
+            <div class="subtitle">I design beautifully simple things, and I love what I do.</div>
+            <div class="location">Cupertino, California</div>
+            <div style="color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem;">banjan10@gmail.com</div>
+            <div style="font-size: 1.1rem; color: var(--navy); font-weight: 600;">1st Prize Winner at DAHacks 3.5 (120+ participants)</div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="section-title">About Me</div>
+        <div class="card-list">
+            <div class="info-card">
+                <h3>Current Student</h3>
+                <p>Studying at De Anza College, passionate about technology, design, and travel.</p>
+            </div>
+            <div class="info-card">
+                <h3>World Traveler</h3>
+                <p>I've traveled to many countries, especially in Europe, exploring cultures and ideas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="education">
+        <div class="section-title">Education</div>
+        <div class="info-card" style="max-width: 350px;">
+            <h3>De Anza College</h3>
+            <p>Current Student<br>Major: (Your Major Here)</p>
+        </div>
+    </section>
+
+    <section class="section" id="achievements">
+        <div class="section-title">Achievements</div>
+        <div class="info-card" style="max-width: 350px;">
+            <h3>DAHacks 3.5</h3>
+            <p>1st Prize Winner among 120+ participants</p>
+        </div>
+    </section>
+
+    <section class="section" id="travel">
+        <div class="section-title">Travel Experiences</div>
+        <div class="info-card" style="max-width: 350px;">
+            <h3>Europe</h3>
+            <p>Explored various countries across Europe, learning from diverse cultures and people.</p>
+        </div>
+    </section>
+
+    <div class="footer">
+        Inspired by <a href="https://dribbble.com/shots/16831903-Portfolio-Web-Site-Design-Landing-Page-Home-Page-UI" target="_blank" style="color: var(--accent); text-decoration: underline;">@Binjan on Dribbble</a>
+    </div>
+</body>
+</html>
