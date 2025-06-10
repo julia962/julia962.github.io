@@ -3,221 +3,453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julia's Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Chun-Fang Wei - Resume</title>
     <style>
-        :root {
-            --navy: #1a1b4b;
-            --accent: #007AFF;
-            --bg: #f8f9fa;
-            --card-bg: #fff;
-            --text: #222;
-            --muted: #6c757d;
-            --radius: 24px;
-        }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .navbar {
-            background: var(--card-bg);
-            border-radius: 0 0 var(--radius) var(--radius);
-            box-shadow: 0 2px 16px rgba(26,27,75,0.04);
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
         }
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--navy);
-            letter-spacing: -1px;
-        }
-        .nav {
-            display: flex;
-            gap: 2rem;
-        }
-        .nav a {
-            color: var(--navy);
-            font-weight: 500;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-        .nav a:hover {
-            color: var(--accent);
-        }
-        .hero {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            margin: 2rem auto 2.5rem auto;
-            max-width: 900px;
-            box-shadow: 0 8px 32px rgba(26,27,75,0.08);
-            padding: 3rem 2rem 2.5rem 2rem;
-            position: relative;
+        
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
             overflow: hidden;
-            text-align: left;
+            position: relative;
         }
-        .hero::before {
+        
+        .resume-container::before {
             content: '';
             position: absolute;
-            top: -60px; left: -60px;
-            width: 300px; height: 300px;
-            background: linear-gradient(120deg, var(--accent) 0%, var(--navy) 100%);
-            opacity: 0.08;
-            border-radius: 50%;
-            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
         }
-        .hero-content {
+        
+        .header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
             position: relative;
-            z-index: 1;
         }
-        .hero h1 {
-            font-size: 3rem;
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #2d3748;
+        }
+        
+        .name {
+            font-size: 2.8rem;
             font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        .hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-        }
-        .hero .location {
-            font-size: 1.1rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-        .hero .avatar {
-            float: right;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid var(--bg);
-            box-shadow: 0 4px 24px rgba(26,27,75,0.10);
-            margin-left: 2rem;
-        }
-        .section {
-            max-width: 900px;
-            margin: 0 auto 2.5rem auto;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: 0 4px 24px rgba(26,27,75,0.06);
-            padding: 2.5rem 2rem;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-        .card-list {
+        
+        .contact-info {
             display: flex;
-            gap: 2rem;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
-        .info-card {
-            background: var(--bg);
-            border-radius: var(--radius);
-            box-shadow: 0 2px 8px rgba(26,27,75,0.04);
-            padding: 1.5rem 1.2rem;
-            flex: 1 1 220px;
-            min-width: 220px;
-            margin-bottom: 1.5rem;
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
-        .info-card h3 {
+        
+        .content {
+            padding: 60px 40px 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(90deg, #667eea, #764ba2) bottom left / 60px 3px no-repeat;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 60px;
+            width: 20px;
+            height: 3px;
+            background: linear-gradient(90deg, #f093fb, #f5576c);
+        }
+        
+        .experience-item {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 0 0 0 8px;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        
+        .company {
+            font-size: 1rem;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .job-description {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .job-description li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        
+        .job-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill-category h4 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .education-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #f093fb;
+        }
+        
+        .degree {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
+            color: #1a202c;
+            margin-bottom: 8px;
         }
-        .info-card p {
-            color: var(--muted);
-            font-size: 1rem;
-            margin-bottom: 0;
+        
+        .school {
+            color: #f093fb;
+            font-weight: 500;
+            margin-bottom: 5px;
         }
-        .footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 1rem;
-            margin: 2rem 0 1rem 0;
+        
+        .hackathon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
         }
-        @media (max-width: 900px) {
-            .hero, .section { padding: 2rem 1rem; }
-            .card-list { flex-direction: column; gap: 1rem; }
-            .hero .avatar { float: none; display: block; margin: 0 auto 1.5rem auto; }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 40px 25px 25px;
+            }
+            
+            .header {
+                padding: 30px 25px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-brand">Julia</div>
-        <div class="nav">
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#travel">Travel</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Julia's Avatar" class="avatar">
-            <h1>Hey There,<br>I'm Julia</h1>
-            <div class="subtitle">I design beautifully simple things, and I love what I do.</div>
-            <div class="location">Mountain View, CA</div>
-            <div style="color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem;">julia085908@gmail.com</div>
-            <div style="font-size: 1.1rem; color: var(--navy); font-weight: 600;">1st Prize Winner at DAHacks 3.5 (120+ participants) 2025</div>
-        </div>
-    </section>
-
-    <section class="section" id="about">
-        <div class="section-title">About Me</div>
-        <div class="card-list">
-            <div class="info-card">
-                <h3>Current Student</h3>
-                <p>Studying at De Anza College, passionate about technology, design, and travel.</p>
+    <div class="resume-container">
+        <div class="header">
+            <h1 class="name">Chun-Fang Wei</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>julia085908@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>(669) 259-9053</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Cupertino, CA</span>
+                </div>
             </div>
-            <div class="info-card">
-                <h3>World Traveler</h3>
-                <p>I've traveled to many countries, especially in Europe, exploring cultures and ideas.</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Full-Stack Development</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Specialties</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Algorithm Design</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Hardware Testing</span>
+                            <span class="skill-tag">Technical Documentation</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Soft Skills</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Team Leadership</span>
+                            <span class="skill-tag">Cross-Cultural Communication</span>
+                            <span class="skill-tag">Rapid Prototyping</span>
+                            <span class="skill-tag">Financial Literacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
+            <div class="section">
+                <h2 class="section-title">Experience & Projects</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">First Place Hackathon Winner – Student Financial Planner <span class="hackathon-badge">🏆 Winner</span></h3>
+                    <ul class="job-description">
+                        <li>Led a cross-functional team to build a full-stack web app that helps students evaluate the ROI of different college programs</li>
+                        <li>Designed the front end using HTML/CSS and implemented backend algorithms in C++</li>
+                        <li>Delivered a working MVP within 24 hours and won first place for solving a real-world education problem</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">C++ Teaching Assistant</h3>
+                    <p class="company">De Anza College</p>
+                    <ul class="job-description">
+                        <li>Supported students in mastering C++ through one-on-one and group instruction</li>
+                        <li>Clarified concepts in object-oriented programming, pointers, and data structures</li>
+                        <li>Guided students in labs, debugging, and developing strong logical problem-solving skills</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Tech Lab Intern – Engineering Support</h3>
+                    <p class="company">Tech Company</p>
+                    <ul class="job-description">
+                        <li>Supported engineers with component testing, troubleshooting, and technical documentation in a hardware lab environment</li>
+                        <li>Gained hands-on experience with iterative testing processes and collaborative technical workflows</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Piano Instructor</h3>
+                    <ul class="job-description">
+                        <li>Taught students of all ages, tailoring lessons to individual learning styles</li>
+                        <li>Built strong communication and adaptability skills by explaining complex concepts clearly and adjusting to different needs</li>
+                        <li>Reinforced discipline, patience, and goal-oriented planning through structured practice and performance preparation</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Volunteer – Education & Infrastructure</h3>
+                    <p class="company">Alice Springs, Australia - Indigenous Community</p>
+                    <ul class="job-description">
+                        <li>Spent one year supporting education initiatives and assisting with basic infrastructure projects in a remote Indigenous community</li>
+                        <li>Strengthened cross-cultural communication, resilience, and resourcefulness in a challenging environment</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Founder – High School Cheerleading Club</h3>
+                    <p class="company">Leadership & Event Management</p>
+                    <ul class="job-description">
+                        <li>Initiated and led the school's first cheerleading team, managing logistics, paperwork, scheduling, and team coordination</li>
+                        <li>Led the team to participate in multiple competitions, demonstrating organizational and leadership skills</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h3 class="degree">Computer Science Student</h3>
+                    <p class="school">De Anza College</p>
+                    <p>Focus: C++ Programming, Data Structures, Algorithm Design</p>
+                </div>
+                
+                <div class="education-item" style="margin-top: 20px;">
+                    <h3 class="degree">Diploma in Education</h3>
+                    <p class="school">New Zealand Tertiary College, New Zealand</p>
+                </div>
+                
+                <div class="education-item" style="margin-top: 20px;">
+                    <h3 class="degree">High School Diploma</h3>
+                    <p class="school">Hsinchu Girls Senior High School, Taiwan</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Additional Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Saxophonist – Symphonic Band</h3>
+                    <p class="company">5 Years • Regional Competitions</p>
+                    <ul class="job-description">
+                        <li>Played saxophone in a competitive symphonic band, performing at regional competitions</li>
+                        <li>Learned the importance of timing, consistency, and team synchronization</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Jazz Dancer</h3>
+                    <p class="company">2 Years</p>
+                    <ul class="job-description">
+                        <li>Performed in both solo and group routines, developing strong rhythm, stage presence, and collaboration skills in fast-paced, performance-driven environments</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Violinist</h3>
+                    <p class="company">3 Years</p>
+                    <ul class="job-description">
+                        <li>Classically trained violinist with years of ensemble and solo performance experience</li>
+                        <li>Built discipline, precision, and a long-term commitment to structured practice</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </section>
-
-    <section class="section" id="education">
-        <div class="section-title">Education</div>
-        <div class="info-card" style="max-width: 350px;">
-            <h3>De Anza College</h3>
-            <p>Current Student<br>Major: (Your Major Here)</p>
-        </div>
-    </section>
-
-    <section class="section" id="achievements">
-        <div class="section-title">Achievements</div>
-        <div class="info-card" style="max-width: 350px;">
-            <h3>DAHacks 3.5</h3>
-            <p>1st Prize Winner among 120+ participants</p>
-        </div>
-    </section>
-
-    <section class="section" id="travel">
-        <div class="section-title">Travel Experiences</div>
-        <div class="info-card" style="max-width: 350px;">
-            <h3>Europe</h3>
-            <p>Explored various countries across Europe, learning from diverse cultures and people.</p>
-        </div>
-    </section>
-
-    <div class="footer">
-        Inspired by <a href="https://dribbble.com/shots/16831903-Portfolio-Web-Site-Design-Landing-Page-Home-Page-UI" target="_blank" style="color: var(--accent); text-decoration: underline;">@Binjan on Dribbble</a>
     </div>
 </body>
 </html>
